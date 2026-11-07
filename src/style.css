@@ -317,28 +317,108 @@ ul.topics {
   text-align: right;
 }
 
-/* GitHub activity */
+/* GitHub activity (lib/heatmap.js) */
 
 .activity {
   margin: 0 0 1rem;
+  container-type: inline-size;
 }
-.activity svg {
-  display: block;
-  width: 100%;
-  height: auto;
+.heatmap {
+  --gap: 0.45cqw; /* scales with the width, like the squares */
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 6px;
+  color: var(--muted);
+  font: 10px/1 system-ui, -apple-system, sans-serif;
 }
-.activity text {
-  fill: var(--muted);
-  font: 10px system-ui, -apple-system, sans-serif;
+.heatmap .months {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  column-gap: var(--gap);
+  margin-bottom: 4px;
 }
-.activity .h0 { fill: var(--heat-0); }
-.activity .h1 { fill: var(--heat-1); }
-.activity .h2 { fill: var(--heat-2); }
-.activity .h3 { fill: var(--heat-3); }
-.activity .h4 { fill: var(--heat-4); }
+.heatmap .months span {
+  white-space: nowrap;
+}
+.heatmap .weekdays {
+  grid-row: 2;
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  row-gap: var(--gap);
+}
+.heatmap .weekdays span {
+  display: flex;
+  align-items: center;
+}
+.heatmap .cells {
+  grid-row: 2;
+  grid-column: 2;
+  display: grid;
+  grid-template-rows: repeat(7, auto);
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  grid-auto-flow: column;
+  gap: var(--gap);
+}
+.heatmap .cells > * {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 20%; /* scales with the square, so small screens get squares, not dots */
+}
+.activity .h0 { background: var(--heat-0); }
+.activity .h1 { background: var(--heat-1); }
+.activity .h2 { background: var(--heat-2); }
+.activity .h3 { background: var(--heat-3); }
+.activity .h4 { background: var(--heat-4); }
+
+/* Tooltip */
+.heatmap .cells span:hover {
+  outline: 1px solid var(--text);
+}
+.heatmap .cells span:hover::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+  padding: 5px 8px;
+  border-radius: 4px;
+  background: var(--text);
+  color: var(--bg);
+  font: 12px/1.2 system-ui, -apple-system, sans-serif;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.heatmap .cells span.tl:hover::after {
+  left: 0;
+  transform: none;
+}
+.heatmap .cells span.tr:hover::after {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
 .activity figcaption {
-  margin-top: 0.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-top: 0.6rem;
 }
 .activity figcaption a {
   color: inherit;
+}
+.activity .legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font: 10px system-ui, -apple-system, sans-serif;
+}
+.activity .legend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
 }
