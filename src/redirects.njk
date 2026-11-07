@@ -1,0 +1,20 @@
+---
+# Old WordPress pages that now live elsewhere on the site.
+redirects:
+  - { from: /about/, to: / }
+  - { from: /bookshelf/, to: /reading/ }
+  - { from: /blogs/, to: /reading/ }
+  - { from: /text2excel/, to: /llmtext2excel/ }
+pagination:
+  data: redirects
+  size: 1
+  alias: r
+permalink: "{{ r.from }}"
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<meta charset="utf-8">
+<title>Moved</title>
+<link rel="canonical" href="{{ site.url }}{{ r.to }}">
+<meta http-equiv="refresh" content="0; url={{ r.to }}">
+<p>This page has moved to <a href="{{ r.to }}">{{ site.url }}{{ r.to }}</a>.</p>

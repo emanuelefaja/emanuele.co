@@ -1,0 +1,25 @@
+---
+layout: base.njk
+title: Notes on Everything
+permalink: /notes/
+---
+<h1>Notes on Everything <span class="count">{{ stats.words | number }} words across {{ collections.posts.length }} notes</span></h1>
+
+<p>My essays have no specific topic in common; the only commonality is that I wrote them. I call them my <em>“notes on everything”</em>. I write because teaching is the best way to learn. Writing helps me make sense of my ideas and straightforwardly express them.</p>
+
+<blockquote>
+  <p>A person who goes to a philosopher should carry away with him something or other of value every day; he should return home a sounder man or at least more capable of becoming one.</p>
+  <p>Seneca</p>
+</blockquote>
+
+<p>I don’t consider myself a philosopher, but I hope anyone who reads my essays can return home a sounder person!</p>
+
+<p class="topic-line">
+  <a href="/essays/">{{ "essays" | topicName }}</a> · <a href="/short/">{{ "short" | topicName }}</a>
+  {%- for t in topics %}{% if t.slug != "essays" and t.slug != "short" %} · <a href="/{{ t.slug }}/">{{ t.name }}</a>{% endif %}{% endfor -%}
+</p>
+
+{% for group in collections.posts | byYear %}
+<h2>{{ group.year }}</h2>
+{% set items = group.items %}{% include "post-list.njk" %}
+{% endfor %}

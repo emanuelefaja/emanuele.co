@@ -1,0 +1,20 @@
+{
+  "name": "emanuele.co",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy --quiet",
+    "import": "node scripts/import-wordpress.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.8",
+    "linkedom": "^0.18.15",
+    "markdown-it-footnote": "^4.0.0",
+    "turndown": "^7.2.5",
+    "turndown-plugin-gfm": "^1.0.2"
+  }
+}

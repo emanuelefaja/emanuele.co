@@ -1,0 +1,15 @@
+---
+layout: base.njk
+pagination:
+  data: topics
+  size: 1
+  alias: topic
+  addAllPagesToCollections: true
+permalink: "/{{ topic.slug }}/"
+eleventyComputed:
+  title: "{{ topic.name }}"
+---
+{%- set items = collections.posts | inTopic(topic.slug) %}
+<h1>{{ topic.name }}</h1>
+<p class="meta">{{ items.length }} {{ "post" if items.length == 1 else "posts" }} · <a href="/topics/">All topics</a></p>
+{% include "post-list.njk" %}

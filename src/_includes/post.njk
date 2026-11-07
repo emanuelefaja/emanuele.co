@@ -1,0 +1,19 @@
+---
+layout: base.njk
+---
+<article>
+  <header>
+    <h1>{{ title }}</h1>
+    <p class="meta">
+      <time datetime="{{ page.date | date('iso') }}">{{ page.date | date('long') }}</time>
+      {%- for slug in categories %}{% if loop.first %} · {% else %}, {% endif %}<a href="/{{ slug }}/">{{ slug | topicName }}</a>{% endfor %}
+    </p>
+  </header>
+  {{ content | safe }}
+</article>
+{%- set newer = collections.posts | getPreviousCollectionItem(page) %}
+{%- set older = collections.posts | getNextCollectionItem(page) %}
+<nav class="post-nav">
+  {% if older %}<a href="{{ older.url }}" rel="prev">← {{ older.data.title }}</a>{% else %}<span></span>{% endif %}
+  {% if newer %}<a href="{{ newer.url }}" rel="next">{{ newer.data.title }} →</a>{% endif %}
+</nav>

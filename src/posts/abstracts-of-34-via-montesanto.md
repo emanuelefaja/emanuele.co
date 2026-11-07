@@ -1,0 +1,13 @@
+---
+title: "Abstracts of 34 Via Montesanto."
+date: 2022-01-19T12:07:00Z
+categories: [short]
+---
+
+Last year I found myself in Palermo, Sicily with plenty of time on my hands. I decided to take the time to really explore the apartment that I was living in.
+
+Interestingly, we often don’t bother to notice the small but lovely details of life, *especially* in the places that we are highly accustomed to.
+
+We lose that child-like quality of curiosity and amazement and end up in a bored daze. With this in mind, I decided to explore the small details that I have previously overlooked. I took these photos quite early in the morning, with the light streaming in from the large windows and creating some interesting patterns.
+
+<figure class="gallery"><img src="/media/2021/05/DSCF2965.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2964.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2963.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2961.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2960.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2958.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2957.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2956.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2955.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2953.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2952.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2951.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2950.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2949.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2947.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2946.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2945.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2944.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2942.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2941.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2940.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2939.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2930.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2925.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2924.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2923.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2922.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2920.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2918.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2917.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2916.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2915.jpg" alt="" loading="lazy"><img src="/media/2021/05/DSCF2914.jpg" alt="" loading="lazy"></figure>

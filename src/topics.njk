@@ -1,0 +1,13 @@
+---
+layout: base.njk
+title: Topics
+permalink: /topics/
+---
+<h1>Topics</h1>
+{%- macro topic(slug) %}<a href="/{{ slug }}/">{{ slug | topicName }}</a> ({{ (collections.posts | inTopic(slug)).length }}){% endmacro %}
+<p>My writing is split into {{ topic("essays") }} and {{ topic("short") }}, which cover:</p>
+<ul class="topics">
+{%- for t in topics %}{% if t.slug != "essays" and t.slug != "short" %}
+  <li>{{ topic(t.slug) }}</li>
+{%- endif %}{% endfor %}
+</ul>

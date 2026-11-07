@@ -1,0 +1,344 @@
+:root {
+  --bg: #fdfcfa;
+  --text: #1b1b1a;
+  --muted: #6f6d68;
+  --rule: #e5e2dc;
+  --code-bg: #f3f1ec;
+  --link: #1b1b1a;
+  --underline: #b9b6af;
+  --heat-0: #ebe9e4;
+  --heat-1: #cbc8c1;
+  --heat-2: #9c9890;
+  --heat-3: #5e5b55;
+  --heat-4: #1b1b1a;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161615;
+    --text: #e8e6e1;
+    --muted: #9b9891;
+    --rule: #2e2d2a;
+    --code-bg: #21201e;
+    --link: #f2f0eb;
+    --underline: #5f5c57;
+    --heat-0: #262523;
+    --heat-1: #4a4844;
+    --heat-2: #7a7771;
+    --heat-3: #b3b0a9;
+    --heat-4: #f2f0eb;
+  }
+}
+
+html {
+  font-size: 112.5%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 1rem/1.6 Charter, "Bitstream Charter", "Iowan Old Style", "Sitka Text", Cambria, Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 2.5rem 1rem 3rem;
+}
+
+a {
+  color: var(--link);
+  text-decoration-color: var(--underline);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Header & footer */
+
+header.site {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1.25rem;
+  margin-bottom: 3rem;
+}
+header.site .name {
+  margin-right: auto;
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+header.site nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+}
+@media (max-width: 30rem) {
+  header.site nav {
+    gap: 0.25rem 0.9rem;
+  }
+}
+header.site .social {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  align-self: center;
+}
+header.site .social a {
+  display: inline-flex;
+}
+header.site .social svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  fill: currentColor;
+}
+header.site nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+header.site nav a:hover {
+  color: var(--text);
+}
+header.site nav a[aria-current] {
+  color: var(--text);
+  font-weight: 700;
+}
+
+footer.site {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+footer.site a {
+  color: inherit;
+}
+
+/* Text */
+
+h1, h2, h3 {
+  line-height: 1.25;
+  text-wrap: balance;
+}
+h1 {
+  font-size: 1.6rem;
+  margin: 0 0 0.35rem;
+}
+h2 {
+  font-size: 1.2rem;
+  margin: 2.5rem 0 0.75rem;
+}
+h3 {
+  font-size: 1rem;
+  margin: 2rem 0 0.5rem;
+}
+p, li {
+  text-wrap: pretty;
+}
+.meta {
+  margin: 0 0 2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.meta a {
+  color: inherit;
+}
+
+blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule);
+}
+
+hr {
+  margin: 2.5rem 0;
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82em;
+}
+pre {
+  overflow-x: auto;
+  padding: 0.9rem 1rem;
+  background: var(--code-bg);
+  border-radius: 4px;
+  line-height: 1.5;
+}
+pre code {
+  white-space: pre-wrap;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+th, td {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+
+/* Media */
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 1.5rem 0;
+  border: 0;
+}
+figure {
+  margin: 2rem 0;
+}
+figure img, figure video {
+  display: block;
+}
+figcaption {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  gap: 0.4rem;
+}
+.gallery img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+.gallery figcaption {
+  grid-column: 1 / -1;
+}
+
+/* Footnotes (markdown-it-footnote) */
+
+.footnotes-sep {
+  margin-top: 3rem;
+}
+.footnotes {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.footnote-ref a {
+  text-decoration: none;
+}
+
+/* Lists of posts */
+
+.intro {
+  margin: 0 0 2.5rem;
+}
+h1 .count,
+h2 .count {
+  margin-left: 0.4rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+.portrait {
+  margin: -2rem 0 2rem; /* the faded top would otherwise read as extra space under the header */
+}
+/* Fade the top of the photo into the page background. */
+.portrait img {
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 55%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 55%);
+}
+.more {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+.topic-line {
+  margin: 2rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+.topic-line a {
+  color: inherit;
+}
+ul.posts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul.posts li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.15rem 0;
+}
+ul.posts a {
+  text-decoration: none;
+}
+ul.posts a:hover {
+  text-decoration: underline;
+}
+ul.posts time {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+ul.topics {
+  columns: 2;
+  padding-left: 1.1rem;
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+.post-nav a[rel="next"] {
+  text-align: right;
+}
+
+/* GitHub activity */
+
+.activity {
+  margin: 0 0 1rem;
+}
+.activity svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.activity text {
+  fill: var(--muted);
+  font: 10px system-ui, -apple-system, sans-serif;
+}
+.activity .h0 { fill: var(--heat-0); }
+.activity .h1 { fill: var(--heat-1); }
+.activity .h2 { fill: var(--heat-2); }
+.activity .h3 { fill: var(--heat-3); }
+.activity .h4 { fill: var(--heat-4); }
+.activity figcaption {
+  margin-top: 0.25rem;
+}
+.activity figcaption a {
+  color: inherit;
+}

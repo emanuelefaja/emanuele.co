@@ -1,0 +1,18 @@
+---
+layout: base.njk
+title: Emanuele
+permalink: /
+---
+<figure class="portrait">
+  <img src="/media/2023/01/emanuele.jpeg" alt="Emanuele by the sea in Indonesia" width="750" height="404">
+</figure>
+
+<p>My name is Emanuele. I’m thirty-something and from Europe. I enjoy learning, reading, and writing.</p>
+
+<p class="intro">I work at the <a href="https://undp.org">UNDP</a> Executive Office in New York, and I founded <a href="https://blue.app">Blue</a>.</p>
+
+{% heatmap github %}
+
+<h2>Recent notes</h2>
+{% set items = collections.posts | head(5) %}{% set dateFormat = "medium" %}{% include "post-list.njk" %}
+<p class="more"><a href="/notes/">All {{ collections.posts.length }} notes →</a></p>
