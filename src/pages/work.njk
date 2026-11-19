@@ -1,0 +1,125 @@
+---
+layout: base.njk
+title: Work
+bodyClass: work
+description: "Selected work: an LLM pipeline for UNDP project documents, the UNDP Performance App, and Blue with its agent tooling."
+permalink: /work/
+---
+<article class="work">
+
+<header class="work-head">
+  <p class="kicker">Selected work · 2026</p>
+  <h1>I build around how people work.</h1>
+  <p class="lede">I founded a product studio, built Blue, and work at UNDP’s Executive Office. The pattern is the same each time: find where the work gets stuck, build the tool that unsticks it, and stay until people are using it.</p>
+  <nav class="jump" aria-label="Cases">
+    <a href="#documents"><span>01</span> An LLM pipeline</a>
+    <a href="#performance"><span>02</span> The Performance App</a>
+    <a href="#blue"><span>03</span> Blue, and agents</a>
+  </nav>
+</header>
+
+<ul class="stats">
+  <li><b>15,000+</b><span>project documents through a pipeline I built at UNDP</span></li>
+  <li><b>9 min → 1 min</b><span>one 21-page project document, after parallelising the extraction</span></li>
+  <li><b>15% → 75%</b><span>safeguards compliance in three months, through the Performance App</span></li>
+  <li><b>19,000</b><span>registered organisations on Blue</span></li>
+</ul>
+
+<section class="case" id="documents">
+  <p class="case-no">01 — Applied AI</p>
+  <h2>The risk register nobody wanted to read</h2>
+  <p class="case-lede">UNDP runs projects in 170 countries. Each carries a project document—often a few dozen pages, sometimes hundreds—and each needs a risk register: the risks, their causes, their treatment, scored impact × likelihood. The register was written by reading the document from end to end.</p>
+
+  <div class="pair">
+    <div>
+      <h3>Problem</h3>
+      <p>The reading was slow and repetitive, and almost identical in shape from one project to the next. The output was eight fields in a table.</p>
+    </div>
+    <div>
+      <h3>Build</h3>
+      <p>A pipeline: a project document goes in, text is split into 4,000-word blocks, each block is extracted into one structured record, and the records are assembled into the register workbook. Then a web interface so an analyst could drop a PDF and download the result without running anything.</p>
+    </div>
+  </div>
+
+  <figure class="plate">
+    <div class="record" role="group" aria-label="One extracted record">
+      <div class="record-head"><span>Output · one record</span><span>Iraq · 2006 project</span></div>
+      <dl>
+        <dt>Event</dt><dd>Deterioration of the security situation</dd>
+        <dt>Cause</dt><dd>Political instability, civil unrest, or armed conflict in the region</dd>
+        <dt>Impacts</dt><dd>Delays or complete halt; harm to staff and communities; damage to infrastructure; failure to deliver water and sanitation access.</dd>
+        <dt>Treatment</dt><dd>Comprehensive security plan, staff training, coordination with local authorities, contingency plans for evacuation or suspension…</dd>
+      </dl>
+      <div class="record-scores"><span>Impact <b>4</b></span><span>Likelihood <b>3</b></span><span>Significance <b>12</b></span></div>
+    </div>
+    <figcaption>Verbatim from the model’s output, trimmed for space. <a href="https://emanuele.co/automating-risk-registers-at-undp-v3/">Full text in the working notes</a>.</figcaption>
+  </figure>
+
+  <h3>What testing changed</h3>
+  <div class="bench" role="group" aria-label="Processing time on a 21-page document">
+    <div class="bench-row"><span class="bench-label">Sequential</span><span class="bench-bar"><i style="width:100%"></i></span><b>531s</b></div>
+    <div class="bench-row"><span class="bench-label">Parallel</span><span class="bench-bar"><i style="width:11.3%"></i></span><b>60s</b></div>
+    <p class="bench-note">Same document, same model, same analysis. Parallel API calls across 8 cores: about nine times faster.</p>
+  </div>
+
+  <ol class="changes">
+    <li><b>Run the calls at once.</b> The analysis was per-chunk and independent. The output was identical; only the waiting was unnecessary.</li>
+    <li><b>Say when there is nothing.</b> Chunks with no risks were inventing entries. One line—“reply NO RISK DETECTED if none”—removed them.</li>
+    <li><b>Align with the policy.</b> I rewrote the prompt against UNDP’s ERM policy: the four treatment types, and a worked example matching the output I wanted.</li>
+  </ol>
+  <p>I checked quality by running the same document through the old and new prompts and comparing field by field. Both found the same top risk, at impact 4 and likelihood 3; the new prompt named the project’s own objectives in the impacts. That work became my MBA dissertation: iterative one-shot learning for document evaluation.</p>
+
+  <h3>Adoption</h3>
+  <p>Analysts upload a project document and download the register as a workbook—no scripts, no setup, nothing to install. 15,000+ documents have gone through it. The reviewer starts from a draft instead of a blank page, and the entries arrive already in UNDP’s categories and 1–5 scales, so they drop straight into the existing register.</p>
+  <p class="links"><a href="https://emanuele.co/automating-risk-registers-at-undp-v3/">Working notes</a> <a href="https://emanuele.co/automating-risk-registers-at-undp-v2/">The interface</a> <a href="https://emanuele.co/increase-llm-speed/">The parallelisation test</a></p>
+</section>
+
+<section class="case" id="performance">
+  <p class="case-no">02 — Institutions</p>
+  <h2>The Performance App</h2>
+  <p class="case-lede">Finance, workforce, audit and impact were spread across different systems and dashboards. I architected and shipped the Performance App, and built the SQL models and Python ETL behind it—a warehouse, an OLAP cube, Salesforce and operational extracts.</p>
+
+  <figure class="plate">
+    <img src="/media/work/undp-overview-detail.png" alt="The UNDP Performance App: corporate report card with five strategic areas and indicator scores" loading="lazy">
+    <figcaption>The live Performance App: 22 indicators across five areas, with global, regional and country-office views. <a href="https://performance.undp.org">performance.undp.org</a></figcaption>
+  </figure>
+
+  <p>It scores organisational units on 22 indicators across five areas, and expanded beyond dashboards into operational workflows. I trained 250+ staff in eight country offices.</p>
+
+  <h3>What it changed</h3>
+  <div class="sesp">
+    <div><span>From</span><b>15<i>%</i></b></div>
+    <div class="sesp-arrow" aria-hidden="true">→</div>
+    <div><span>To</span><b>75<i>%</i></b></div>
+    <p>Environmental and social safeguards compliance, in three months. My work on the app helped: it made targets visible and drill-downs possible. Country offices did the compliance work.</p>
+  </div>
+  <p>SESP is UNDP’s environmental and social safeguards standard. Compliance is the share of projects meeting it, as tracked in the Performance App. Making the target visible—and giving every office the same view of it—is what moved it.</p>
+</section>
+
+<section class="case" id="blue">
+  <p class="case-no">03 — Product</p>
+  <h2>Blue, and the tools agents use</h2>
+  <p class="case-lede">Blue began with onboarding the same client into Asana for the third time. The answer was a configurable place for the records, people and decisions behind a process. 19,000 registered organisations later, I am still founder and principal engineer.</p>
+
+  <figure class="plate">
+    <img src="/media/work/blue-board-demo-detail.png" alt="Blue's board view, showing records moving through Contacted, Proposal and Negotiation" loading="lazy">
+    <figcaption>Current Blue public CRM demo, with sample data. <a href="https://blue.app">blue.app</a></figcaption>
+  </figure>
+
+  <div class="flows">
+    <div class="flow"><span class="flow-label">Blue CLI</span><p>Agent or script <i>→</i> Blue CLI <i>→</i> Blue</p><p class="flow-note">A Go command-line interface: agents can open a workspace, inspect records and make a specific change.</p></div>
+    <div class="flow"><span class="flow-label">Cobalt</span><p>Repository <i>→</i> Cobalt <i>→</i> Running service</p><p class="flow-note">The self-hostable deployment platform that gets the software into operation.</p></div>
+  </div>
+  <p class="links"><a href="https://github.com/heyblueteam/cli">Blue CLI</a> <a href="https://github.com/heyblueteam/cobalt">Cobalt</a> <a href="https://github.com/emanuelefaja">GitHub</a></p>
+
+  <h3>How I build</h3>
+  <p>I build with AI daily—across Blue, UNDP and the tools that support them. The grid below is the last year of that work on GitHub.</p>
+  {% heatmap github %}
+</section>
+
+<footer class="work-end">
+  <p><b>Emanuele “Manny” Faja</b> — <a href="mailto:manny@blue.app">manny@blue.app</a></p>
+  <p class="links"><a href="https://blue.app">Blue</a> <a href="https://github.com/emanuelefaja">GitHub</a> <a href="https://github.com/heyblueteam/cli">Blue CLI</a> <a href="https://github.com/heyblueteam/cobalt">Cobalt</a></p>
+</footer>
+
+</article>
