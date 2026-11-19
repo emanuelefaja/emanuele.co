@@ -5,7 +5,8 @@
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy --quiet",
-    "import": "node scripts/import-wordpress.mjs"
+    "import": "node scripts/import-wordpress.mjs",
+    "import:drafts": "node scripts/import-drafts.mjs"
   },
   "engines": {
     "node": ">=22"

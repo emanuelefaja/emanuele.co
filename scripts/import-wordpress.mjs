@@ -293,9 +293,36 @@ function convert(html, { monthHeadings = false } = {}) {
   return { md, stats };
 }
 
+// ---------------------------------------------------------------- media download pool
+
+// Download everything registered in `media` by convert(). Shared with scripts/import-drafts.mjs.
+// Returns { results: {"cached"|"resized"|"transcoded"|"original": n}, failures: [string], external }.
+async function downloadAllMedia(external = 0, workers = 6) {
+  const queue = [...media.entries()];
+  const results = {};
+  const failures = [];
+  await Promise.all(Array.from({ length: workers }, async () => {
+    for (let item; (item = queue.shift()); ) {
+      try {
+        const r = await fetchMedia(...item);
+        results[r] = (results[r] || 0) + 1;
+      } catch (e) {
+        failures.push(`${item[0]}: ${e.message}`);
+      }
+    }
+  }));
+  return { results, failures, external, referenced: media.size };
+}
+
+function mediaReport({ results, failures, referenced }, external) {
+  console.log(`media: ${referenced} referenced`, results, HAS_FFMPEG ? '' : '(ffmpeg not found: .mov kept as-is)');
+  if (external) console.log(`images still hosted elsewhere: ${external}`);
+  if (failures.length) { console.log(`media failures (${failures.length}):\n  ` + failures.join('\n  ')); process.exitCode = 1; }
+}
+
 // ---------------------------------------------------------------- run
 
-export { convert };
+export { convert, downloadAllMedia, mediaReport, media, yaml, decode, WP, SRC };
 if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();
 
 async function main() {
@@ -346,22 +373,8 @@ for (const p of pages) {
 }
 
 // Download media with a small worker pool.
-const queue = [...media.entries()];
-const results = {};
-const failures = [];
-await Promise.all(Array.from({ length: 6 }, async () => {
-  for (let item; (item = queue.shift()); ) {
-    try {
-      const r = await fetchMedia(...item);
-      results[r] = (results[r] || 0) + 1;
-    } catch (e) {
-      failures.push(`${item[0]}: ${e.message}`);
-    }
-  }
-}));
+const downloaded = await downloadAllMedia(external);
 
 console.log(`posts: ${posts.length}, pages: ${pages.length}, files written: ${written}, skipped (exist): ${skipped}`);
-console.log(`media: ${media.size} referenced`, results, HAS_FFMPEG ? '' : '(ffmpeg not found: .mov kept as-is)');
-if (external) console.log(`images still hosted elsewhere: ${external}`);
-if (failures.length) { console.log(`media failures (${failures.length}):\n  ` + failures.join('\n  ')); process.exitCode = 1; }
+mediaReport(downloaded, external);
 }
