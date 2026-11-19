@@ -2,32 +2,105 @@
 layout: base.njk
 title: Work
 bodyClass: work
-description: "Selected work: an LLM pipeline for UNDP project documents, the UNDP Performance App, and Blue with its agent tooling."
+description: "Selected work: leading Mäd, building Blue, and shipping applied AI and the Performance App at UNDP."
 permalink: /work/
 ---
 <article class="work">
 
+<nav class="work-nav" aria-label="Sections">
+  <a href="#build">100x engineer</a>
+  <a href="#mad">Mäd</a>
+  <a href="#blue">Blue</a>
+  <a href="#undp">UNDP</a>
+  <a href="#reasoning">AI research</a>
+</nav>
+
 <header class="work-head">
-  <p class="kicker">Selected work · 2026</p>
   <h1>I build around how people work.</h1>
   <p class="lede">I founded a product studio, built Blue, and work at UNDP’s Executive Office. The pattern is the same each time: find where the work gets stuck, build the tool that unsticks it, and stay until people are using it.</p>
-  <nav class="jump" aria-label="Cases">
-    <a href="#documents"><span>01</span> An LLM pipeline</a>
-    <a href="#performance"><span>02</span> The Performance App</a>
-    <a href="#blue"><span>03</span> Blue, and agents</a>
-  </nav>
 </header>
 
+<figure class="plate">
+  <img src="/media/work/emanuele-faja.webp" alt="Emanuele ‘Manny’ Faja, marked with an arrow, with the World Food Programme data science team in Rome" width="960" height="540" fetchpriority="high">
+  <figcaption>That’s me with the World Food Programme’s data science team in Rome.</figcaption>
+</figure>
+
+<section class="work-activity" id="build" aria-labelledby="building-with-ai">
+  <h2 id="building-with-ai">The mythical 100x engineer does exist.</h2>
+  <p>I build with AI daily across Blue, UNDP and the tools that support them. <strong>300B tokens</strong> and a year of GitHub activity show the scale of that work. The case studies below show what shipped.</p>
+  {% heatmap github %}
+</section>
+
 <ul class="stats">
-  <li><b>15,000+</b><span>project documents through a pipeline I built at UNDP</span></li>
-  <li><b>9 min → 1 min</b><span>one 21-page project document, after parallelising the extraction</span></li>
-  <li><b>15% → 75%</b><span>safeguards compliance in three months, through the Performance App</span></li>
-  <li><b>19,000</b><span>registered organisations on Blue</span></li>
+  <li><b>250+</b><span>UN staff trained on data, AI and product management in nine countries</span></li>
+  <li><b>$300,000+ a year</b><span>saved in data maintenance costs by the Performance App, which I built single-handedly</span></li>
+  <li><b>15% → 75%</b><span>safeguards compliance in three months, with the Performance App making targets visible</span></li>
+  <li><b>20,000</b><span>registered organizations on Blue, with me as the only engineer</span></li>
 </ul>
 
-<section class="case" id="documents">
-  <p class="case-no">01 — Applied AI</p>
-  <h2>The risk register nobody wanted to read</h2>
+<section class="case" id="mad">
+  <h2>Managing a 35-person product studio at Mäd</h2>
+  <p class="case-lede">After freelancing for agencies in my early twenties, I founded Mäd in Cambodia. I wanted to run a studio where an unusual idea could get a fair hearing. We grew to 35 people and worked on more than 250 projects across design, branding and development.</p>
+
+  <figure class="plate">
+    <img src="/media/work/mad-office.webp" alt="Mäd’s studio in Cambodia, with open desks, plants and the red Mäd sign" width="1400" height="788" loading="lazy">
+    <figcaption>The Mäd studio in Cambodia.</figcaption>
+  </figure>
+
+  <div class="pair">
+    <div>
+      <h3>Heineken: ordering and approvals</h3>
+      <p>We designed both sides of a drinks-ordering app: outlets could place orders on their phones, and distributors could review and approve them.</p>
+    </div>
+    <div>
+      <h3>CIMB and Woori Bank: mobile banking</h3>
+      <p>We redesigned mobile banking screens for both banks, bringing balances and everyday actions such as transfers and payments onto the home screen.</p>
+    </div>
+  </div>
+
+  <figure class="plate">
+    <img src="/media/work/mad-workshop.webp" alt="Mäd team members at a glass wall, placing sticky notes during a workshop" width="1400" height="785" loading="lazy">
+    <figcaption>A workshop at the Mäd studio.</figcaption>
+  </figure>
+</section>
+
+<section class="case" id="blue">
+  <img class="case-logo" src="/media/work/blue-wordmark.svg" alt="Blue" width="184" height="74">
+  <h2>Building processes for 20,000 organizations </h2>
+  <p class="case-lede">Blue began with onboarding the same client into Asana for the third time. The answer was a configurable place for the records, people and decisions behind a process. I am still founder and principal engineer.</p>
+
+  <figure class="plate">
+    <img src="/media/work/blue-board-demo-detail.png" alt="Blue's board view, showing records moving through Contacted, Proposal and Negotiation" loading="lazy">
+    <figcaption><a href="https://blue.app">blue.app</a></figcaption>
+  </figure>
+
+  <div class="flows">
+    <div class="flow"><span class="flow-label">Blue CLI</span><p>Agent or script <i>→</i> Blue CLI <i>→</i> Blue</p><p class="flow-note">A Go command-line interface: agents can open a workspace, inspect records and make a specific change.</p></div>
+    <div class="flow"><span class="flow-label">Cobalt</span><p>Repository <i>→</i> Cobalt <i>→</i> Running service</p><p class="flow-note">The self-hostable deployment platform that gets the software into operation.</p></div>
+  </div>
+  <p class="links"><a href="https://github.com/heyblueteam/cli">Blue CLI</a> <a href="https://github.com/heyblueteam/cobalt">Cobalt</a> <a href="https://github.com/emanuelefaja">GitHub</a></p>
+</section>
+
+<section class="case" id="undp">
+  <h2>Building tools at UNDP</h2>
+
+<section id="standards">
+  <h3>I wrote the UNDP Digital Standards</h3>
+  <p class="case-lede">Within three months of joining UNDP, I was asked to write the Digital Standards: guidance for UNDP teams on best practices when creating digital solutions for development. They were written to give 170 offices and more than 4,500 projects a common approach, and UNDP has published them so other teams can use them too.</p>
+  <p class="links"><a href="https://www.undp.org/digital/standards">Read the UNDP Digital Standards</a></p>
+</section>
+
+<section id="trainings">
+  <h3>Training UN teams in nine countries</h3>
+  <p class="case-lede">I travelled to nine countries to train UN teams on data, artificial intelligence, project management and product management, reaching more than 250 staff.</p>
+  {% include "travel-map.svg" %}
+  <ul class="places">
+    <li>Afghanistan</li><li>Belgium</li><li>Colombia</li><li>El Salvador</li><li>Italy <small>(World Food Programme, Rome)</small></li><li>Mexico</li><li>Panama</li><li>Turkey</li><li>United States</li>
+  </ul>
+</section>
+
+<section id="documents">
+  <h3>Automating 15,000 Risk Registers</h3>
   <p class="case-lede">UNDP runs projects in 170 countries. Each carries a project document—often a few dozen pages, sometimes hundreds—and each needs a risk register: the risks, their causes, their treatment, scored impact × likelihood. The register was written by reading the document from end to end.</p>
 
   <div class="pair">
@@ -37,7 +110,7 @@ permalink: /work/
     </div>
     <div>
       <h3>Build</h3>
-      <p>A pipeline: a project document goes in, text is split into 4,000-word blocks, each block is extracted into one structured record, and the records are assembled into the register workbook. Then a web interface so an analyst could drop a PDF and download the result without running anything.</p>
+      <p>It splits a project document into blocks, extracts a structured record from each, and assembles the register.</p>
     </div>
   </div>
 
@@ -74,17 +147,16 @@ permalink: /work/
   <p class="links"><a href="https://emanuele.co/automating-risk-registers-at-undp-v3/">Working notes</a> <a href="https://emanuele.co/automating-risk-registers-at-undp-v2/">The interface</a> <a href="https://emanuele.co/increase-llm-speed/">The parallelisation test</a></p>
 </section>
 
-<section class="case" id="performance">
-  <p class="case-no">02 — Institutions</p>
-  <h2>The Performance App</h2>
-  <p class="case-lede">Finance, workforce, audit and impact were spread across different systems and dashboards. I architected and shipped the Performance App, and built the SQL models and Python ETL behind it—a warehouse, an OLAP cube, Salesforce and operational extracts.</p>
+<section id="performance">
+  <h3>The Performance App: The Mother of All Dashboards</h3>
+  <p class="case-lede">The Performance App is UNDP’s data dashboard. Finance, workforce, audit and impact data used to sit in separate systems and dashboards; now senior management can see them in one place. I built it single-handedly: the architecture, the SQL models, and the Python ETL behind it, including the warehouse, an OLAP cube, and Salesforce and operational extracts. It saves the organization over $300,000 a year in data maintenance costs.</p>
 
   <figure class="plate">
     <img src="/media/work/undp-overview-detail.png" alt="The UNDP Performance App: corporate report card with five strategic areas and indicator scores" loading="lazy">
     <figcaption>The live Performance App: 22 indicators across five areas, with global, regional and country-office views. <a href="https://performance.undp.org">performance.undp.org</a></figcaption>
   </figure>
 
-  <p>It scores organisational units on 22 indicators across five areas, and expanded beyond dashboards into operational workflows. I trained 250+ staff in eight country offices.</p>
+  <p>It scores organisational units on 22 indicators across five areas, and expanded beyond dashboards into operational workflows.</p>
 
   <h3>What it changed</h3>
   <div class="sesp">
@@ -95,26 +167,15 @@ permalink: /work/
   </div>
   <p>SESP is UNDP’s environmental and social safeguards standard. Compliance is the share of projects meeting it, as tracked in the Performance App. Making the target visible—and giving every office the same view of it—is what moved it.</p>
 </section>
+</section>
 
-<section class="case" id="blue">
-  <p class="case-no">03 — Product</p>
-  <h2>Blue, and the tools agents use</h2>
-  <p class="case-lede">Blue began with onboarding the same client into Asana for the third time. The answer was a configurable place for the records, people and decisions behind a process. 19,000 registered organisations later, I am still founder and principal engineer.</p>
-
-  <figure class="plate">
-    <img src="/media/work/blue-board-demo-detail.png" alt="Blue's board view, showing records moving through Contacted, Proposal and Negotiation" loading="lazy">
-    <figcaption>Current Blue public CRM demo, with sample data. <a href="https://blue.app">blue.app</a></figcaption>
-  </figure>
-
-  <div class="flows">
-    <div class="flow"><span class="flow-label">Blue CLI</span><p>Agent or script <i>→</i> Blue CLI <i>→</i> Blue</p><p class="flow-note">A Go command-line interface: agents can open a workspace, inspect records and make a specific change.</p></div>
-    <div class="flow"><span class="flow-label">Cobalt</span><p>Repository <i>→</i> Cobalt <i>→</i> Running service</p><p class="flow-note">The self-hostable deployment platform that gets the software into operation.</p></div>
-  </div>
-  <p class="links"><a href="https://github.com/heyblueteam/cli">Blue CLI</a> <a href="https://github.com/heyblueteam/cobalt">Cobalt</a> <a href="https://github.com/emanuelefaja">GitHub</a></p>
-
-  <h3>How I build</h3>
-  <p>I build with AI daily—across Blue, UNDP and the tools that support them. The grid below is the last year of that work on GitHub.</p>
-  {% heatmap github %}
+<section class="case" id="reasoning">
+  <h2>Building a machine that teaches itself</h2>
+  <p class="case-lede">I’m building a universal reasoning engine: a machine that learns, reasons and improves its own methods. It is intended to invent the last thing humanity will ever need to invent.</p>
+  <p>Today’s AI is trained once, at enormous cost, and its knowledge is locked inside billions of numbers. The human brain runs on about 20 watts and learns from a handful of examples. That tells me the current way of building AI is a choice, not a law of nature.</p>
+  <p>So I’m separating intelligence from knowledge. A small, simple engine reasons over a growing graph of facts, relationships and reusable ways of thinking. It adds what it learns, corrects what it gets wrong and saves a better method when it finds one. Other machines can share that knowledge without retraining.</p>
+  <p>If it works, intelligence becomes cumulative, inspectable and cheap enough to run on your own computer.</p>
+  <p><strong>It could reach frontier-level capability without frontier-scale training.</strong></p>
 </section>
 
 <footer class="work-end">
@@ -123,3 +184,28 @@ permalink: /work/
 </footer>
 
 </article>
+
+<script>
+(function () {
+  var nav = document.querySelector('.work-nav');
+  var links = document.querySelectorAll('.work-nav a');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var byId = {};
+  links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+  function activate(a) {
+    links.forEach(function (l) { l.removeAttribute('aria-current'); });
+    a.setAttribute('aria-current', 'true');
+    nav.style.setProperty('--y', a.offsetTop + 'px');
+    nav.style.setProperty('--h', a.offsetHeight + 'px');
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) activate(byId[e.target.id]); });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  window.addEventListener('resize', function () {
+    var a = document.querySelector('.work-nav a[aria-current]');
+    if (a) activate(a);
+  });
+  Object.keys(byId).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+  activate(links[0]);
+})();
+</script>
